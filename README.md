@@ -7,4 +7,6 @@ This Python script was adapted from the notebook with modifications to resolve d
 
 The PDF doc was also edited from the original - stripped out blank pages.
 
+`langgraph_reflection` from: https://github.com/langchain-ai/langgraph-reflection
+
 Run in PyCharm, using Python 3.11

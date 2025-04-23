@@ -94,17 +94,49 @@ model = init_chat_model(model="openai:gpt-4o")
 
 openai_vector_store_ids = [vector_store.id, ]
 
-tools = [{"type": "function",
-    "function": {"name": "web_search_preview", "description": "Perform a web search and return a preview of results.",
-        "parameters": {"type": "object",
-            "properties": {"query": {"type": "string", "description": "The search query to execute."}},
-            "required": ["query"]}}}, {"type": "function",
-    "function": {"name": "file_search", "description": "Search for information in uploaded files using a vector store.",
-        "parameters": {"type": "object",
-            "properties": {"query": {"type": "string", "description": "The query to search for in the vector store."},
-                "vector_store_ids": {"type": "array", "items": {"type": "string"},
-                    "description": "List of vector store IDs to search in."}},
-            "required": ["query", "vector_store_ids"]}}}]
+tools = [
+    {
+        "type": "function",
+        "function": {
+            "name": "web_search_preview",
+            "description": "Perform a web search and return a preview of results.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "query": {
+                        "type": "string",
+                        "description": "The search query to execute."
+                    }
+                },
+                "required": ["query"]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "file_search",
+            "description": "Search for information in uploaded files using a vector store.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "query": {
+                        "type": "string",
+                        "description": "The query to search for in the vector store."
+                    },
+                    "vector_store_ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of vector store IDs to search in."
+                    }
+                },
+                "required": ["query", "vector_store_ids"]
+            }
+        }
+    }
+]
 
 llm_with_tools = model.bind_tools(tools)
 
