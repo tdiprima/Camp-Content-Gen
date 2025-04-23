@@ -1,0 +1,6 @@
+conda activate base
+conda init zsh && source ~/.zshrc && conda activate langgraph-py311
+
+To use this environment in the future:
+1. Activate it with: conda activate langgraph-py311
+2. Deactivate it with: conda deactivate
