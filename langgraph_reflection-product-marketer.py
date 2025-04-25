@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
 from typing import Optional, Type, Any, Literal
 
 from langchain_core.messages import HumanMessage
@@ -23,6 +20,7 @@ def end_or_reflect(state: MessagesWithSteps) -> Literal[END, "graph"]:
     if isinstance(last_message, HumanMessage):
         return "graph"
     return END
+
 
 def create_reflection_graph(
         graph: CompiledStateGraph,
@@ -58,7 +56,6 @@ from langgraph.graph import StateGraph, MessagesState, START, END
 from typing import TypedDict
 from openevals.llm import create_llm_as_judge
 from dotenv import load_dotenv
-from IPython.display import Markdown, display
 
 client = OpenAI()
 
@@ -89,7 +86,6 @@ print(result)
 
 load_dotenv()
 
-# model = init_chat_model(model="openai:gpt-4o", model_kwargs={"use_responses_api": True})
 model = init_chat_model(model="openai:gpt-4o")
 
 openai_vector_store_ids = [vector_store.id, ]
@@ -151,9 +147,6 @@ The article should use a friendly and approachable tone.
 """
 
 
-# def call_model(state):
-#     print('Creating your article... 📝')
-#     return {"messages": llm_with_tools.invoke(state["messages"])}
 def call_model(state):
     print('Creating your article... 📝')
     messages = state["messages"]
@@ -165,7 +158,6 @@ def call_model(state):
         for tool_call in response.tool_calls:
             tool_call_id = tool_call.get('id')
             tool_name = tool_call.get('name')
-            tool_args = tool_call.get('args', {})
 
             # Simulate tool response (replace with actual tool execution if available)
             if tool_name == "web_search_preview":
@@ -221,7 +213,6 @@ def judge_response(state, config):
         print("✅ Response approved by editor")
         print("")
         print("Here's your article:")
-        # display(Markdown(state["messages"][-1].text()))
         print(state["messages"][-1].text())
         return
     else:
@@ -240,6 +231,4 @@ example_query = [{"role": "user", "content": f"{prompt}", }]
 
 print("Running Content Generator and Editor with Reflection")
 print("")
-# result = reflection_app.invoke({"messages": example_query})
-# Update the invocation to set initial remaining_steps
 result = reflection_app.invoke({"messages": example_query, "remaining_steps": 3})
