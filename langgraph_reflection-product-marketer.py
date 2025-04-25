@@ -79,7 +79,7 @@ def create_file(client, file_path):
 
 file_id = create_file(client, "hiking_products.pdf")
 
-vector_store = client.vector_stores.create(name="knowledge_base")
+vector_store = client.vector_stores.create(name="contoso_outdoors_vstore")
 print(vector_store.id)
 
 result = client.vector_stores.files.create(vector_store_id=vector_store.id, file_id=file_id)
