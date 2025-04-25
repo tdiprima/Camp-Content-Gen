@@ -1,12 +1,18 @@
 # Camp-Content-Gen
 
-Credit to Marlene Mhangami for the original Jupyter notebook inspiration:
+This project builds on earlier work by Marlene Mhangami, whose original Jupyter notebook is here:<br>
 https://github.com/marlenezw/langgraph-reflection-product-marketer
 
-The Python script in this repo was adapted from the notebook in her repo, with modifications to resolve dependency and API issues.
+Her notebook was itself based on:<br>
+https://github.com/langchain-ai/langgraph-reflection/blob/main/examples/llm_as_a_judge.py
 
-The PDF doc was also edited from the original - stripped out blank pages.
+**What's different here:**
 
-`langgraph_reflection` from: https://github.com/langchain-ai/langgraph-reflection
+- The Python script was adapted from Marlene's notebook, with updates to fix dependency and API issues.
+- The PDF document was also modified — blank pages were removed.
+- `langgraph_reflection` library source: https://github.com/langchain-ai/langgraph-reflection
 
-Note to self: Run in PyCharm, using Python 3.11
+**Extra notes:**
+
+- Run `langgraph_reflection-product-marketer.py` in PyCharm (Python 3.11 recommended).
+- Additional original scripts created for this repo: `rag_query.py`, `test_reflection.py`.
