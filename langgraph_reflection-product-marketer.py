@@ -1,3 +1,7 @@
+"""
+Solved dependency issues by baking in langgraph-reflection's __init__.py.
+Nothing else was working for me.  Also tweaked it to use remaining_steps.
+"""
 from typing import Optional, Type, Any, Literal
 
 from langchain_core.messages import HumanMessage
@@ -48,6 +52,10 @@ def create_reflection_graph(
     return rgraph
 
 
+"""
+Made modifications to langgraph-reflection-product-marketer.
+It wasn't working out of the box, so I added what was needed.
+"""
 import requests
 from io import BytesIO
 from openai import OpenAI
